@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_mama/loginHome/loginHome.dart';
 
@@ -5,7 +6,9 @@ import 'package:go_mama/loginHome/loginHome.dart';
 The main function is the first thing running, after running flutter or the dart file.
 */
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

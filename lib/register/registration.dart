@@ -22,7 +22,7 @@ class Registration extends StatelessWidget {
               decoration: InputDecoration(labelText: "Nachname: "),
             ),
             TextField(
-              decoration: InputDecoration(labelText: "Studentische Email - Addresse: "),
+              decoration: InputDecoration(labelText: "Studentische Email - Addresse: "), keyboardType: TextInputType.emailAddress,
             ),
             TextField(
               decoration: InputDecoration(labelText: "Benutzername: "),

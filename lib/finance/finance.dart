@@ -6,7 +6,7 @@ financing topics.
 */
 
 class Finance extends StatelessWidget {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
