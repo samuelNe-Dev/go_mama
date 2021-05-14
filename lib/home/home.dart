@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_mama/loginHome/loginHome.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -205,8 +207,22 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final auth = FirebaseAuth.instance;
     return Scaffold(
-      appBar: AppBar(title: Text("Go Mama")),
+      appBar: AppBar(
+        title: Text("Go Mama"),
+        actions: [
+          TextButton(
+            child: Text("Log out"),
+            style: TextButton.styleFrom(primary: Colors.black),
+            onPressed: () {
+              auth.signOut();
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginHome()));
+            },
+          ),
+        ],
+      ),
       body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
