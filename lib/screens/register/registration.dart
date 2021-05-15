@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:go_mama/verify/verify.dart';
+import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:go_mama/screens/verify/verify.dart';
 
 /*
 This displays the registration screen. If the registration is fully admitted,
@@ -20,7 +21,19 @@ class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Center(child: Text("Go Mama"))),
+        appBar: AppBar(
+          title: Center(child: Text("Go Mama")),
+          actions: [
+            TextButton(
+              child: Text("Back"),
+              style: TextButton.styleFrom(primary: Colors.black),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginHome()));
+              },
+            ),
+          ],
+        ),
         body: Container(
           margin: const EdgeInsets.only(
             left: 70.0,
@@ -80,13 +93,16 @@ class _RegistrationState extends State<Registration> {
                     ),
                     label: Text("Registrieren", style: TextStyle(fontSize: 16)),
                     onPressed: () => {
-                      if(_email.contains("@stud.fra-uas.de")){
-                        _signup(_email, _password) 
-                      }else{
-                        Fluttertoast.showToast(msg: "Bitte geben Sie eine studentische Email ein. (UAS Frankfurt)",)
-                      }
-                      
-                    })),
+                          if (_email.contains("@stud.fra-uas.de"))
+                            {_signup(_email, _password)}
+                          else
+                            {
+                              Fluttertoast.showToast(
+                                msg:
+                                    "Bitte geben Sie eine studentische Email ein. (UAS Frankfurt)",
+                              )
+                            }
+                        })),
           ])),
         ));
   }
