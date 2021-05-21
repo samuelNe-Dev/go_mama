@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -93,7 +94,7 @@ class _HomeState extends State<Home> {
       ),
     ),
     Center(
-      // 'Nachrichten' - page
+      // 'Profil' - page
       child: Scaffold(
         body: Container(
           margin: const EdgeInsets.only(
@@ -101,16 +102,92 @@ class _HomeState extends State<Home> {
             right: 70.0,
             top: 80.0,
           ),
-          child: Column(children: <Widget>[
-            Center(
-                child: Text(
-              "Mein Profil",
-              style: TextStyle(
-                fontSize: 40,
-              ),
-              textAlign: TextAlign.center,
-            )),
-          ]),
+          child: SingleChildScrollView(
+                      child: Column(children: <Widget>[
+              Center(
+                  child: Container(
+                width: 200.0,
+                height: 200.0,
+                decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: Colors.orange,
+                        width: 2.5,
+                        style: BorderStyle.solid),
+                    image: new DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("images/example_profil.jpg"))),
+              )),
+              Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Row(children: <Widget>[
+                    Text(
+                      "Name:",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text("Sandra Sandramann", style: TextStyle(fontSize: 20),),
+                    )
+                  ])),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(children: <Widget>[
+                    Text(
+                      "Geburtsdatum:",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text("01.01.0000", style: TextStyle(fontSize: 20),),
+                    )
+                  ])),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(children: <Widget>[
+                    Text(
+                      "Studiengang:",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text("Informatik", style: TextStyle(fontSize: 20),),
+                    )
+                  ])),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(children: <Widget>[
+                    Text(
+                      "Mutter:",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text("ja", style: TextStyle(fontSize: 20),),
+                    )
+                  ])),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: Text(
+                        "Verfügbarkeiten",
+                        style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime.utc(2020, 01, 01), lastDay: DateTime.utc(2035, 12, 31)),
+                  ),
+                  Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: ElevatedButton.icon(
+                    icon: Icon(
+                      Icons.message,
+                      size: 30,
+                    ),
+                    label: Text("Schreib mir eine Nachricht", style: TextStyle(fontSize: 16)),
+                    onPressed: () =>{},))
+            ]),
+          ),
         ),
       ),
     ),

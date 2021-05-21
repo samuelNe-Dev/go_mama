@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:go_mama/screens/home/home.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 
 /*
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginHome(),
+      home: Home(),
     );
   }
 }
