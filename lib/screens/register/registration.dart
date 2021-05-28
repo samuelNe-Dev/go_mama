@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_mama/firestore.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:go_mama/screens/verify/verify.dart';
 
@@ -16,6 +18,8 @@ class Registration extends StatefulWidget {
 
 class _RegistrationState extends State<Registration> {
   String _email, _password = "";
+  String _firstName, _lastName, _birthday, _major = "";
+
   final auth = FirebaseAuth.instance;
 
   @override
@@ -46,20 +50,36 @@ class _RegistrationState extends State<Registration> {
                 padding: const EdgeInsets.only(bottom: 70),
                 child: Text("Registrierung", style: TextStyle(fontSize: 40))),
             TextFormField(
-              obscureText: true,
               decoration: InputDecoration(labelText: "Vorname: "),
+              onChanged: (value) {
+                setState(() {
+                  _firstName = value.trim();
+                });
+              },
             ),
             TextFormField(
-              obscureText: true,
               decoration: InputDecoration(labelText: "Name: "),
+              onChanged: (value) {
+                setState(() {
+                  _lastName = value.trim();
+                });
+              },
             ),
             TextFormField(
-              obscureText: true,
               decoration: InputDecoration(labelText: "Geburtsdatum: "),
+              onChanged: (value) {
+                setState(() {
+                  _birthday = value.trim();
+                });
+              },
             ),
             TextFormField(
-              obscureText: true,
               decoration: InputDecoration(labelText: "Studiengang: "),
+              onChanged: (value) {
+                setState(() {
+                  _major = value.trim();
+                });
+              },
             ),
             TextFormField(
               decoration:
@@ -93,8 +113,9 @@ class _RegistrationState extends State<Registration> {
                     ),
                     label: Text("Registrieren", style: TextStyle(fontSize: 16)),
                     onPressed: () => {
-                          if (_email.contains("@stud.fra-uas.de"))
-                            {_signup(_email, _password)}
+                          if (_email.contains("@stud.fra-uas.de")){
+                              _signup(_email, _password)
+                            }
                           else
                             {
                               Fluttertoast.showToast(
@@ -111,8 +132,9 @@ class _RegistrationState extends State<Registration> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-
+      userSetup(_firstName, _lastName, _birthday, _major);
       //Success
+
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Verify()));
     } on FirebaseAuthException catch (error) {

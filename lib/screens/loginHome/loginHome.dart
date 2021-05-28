@@ -21,7 +21,9 @@ class _LoginHomeState extends State<LoginHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Center(child: Text("Go Mama")),),
+        appBar: AppBar(
+          title: Center(child: Text("Go Mama")),
+        ),
         body: Container(
           margin: const EdgeInsets.only(
             left: 70.0,
@@ -33,33 +35,59 @@ class _LoginHomeState extends State<LoginHome> {
             Padding(
                 padding: const EdgeInsets.only(bottom: 70),
                 child: Text("Log dich ein!", style: TextStyle(fontSize: 30))),
-            TextField(
-              decoration: InputDecoration(labelText: "Email - Adresse: "),
-              onChanged: (value) {
-                setState(() {
-                  _email = value.trim();
-                });
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                autocorrect: false,
+                decoration: InputDecoration(
+                  hintText: "Email - Adresse: ",
+                  border: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                      const Radius.circular(15.0)
+                    )
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _email = value.trim();
+                  });
+                },
+              ),
             ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(labelText: "Passwort: "),
-              onChanged: (value) {
-                setState(() {
-                  _password = value.trim();
-                });
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                autocorrect: false,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: "Passwort: ",
+                  border: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                      const Radius.circular(15.0)
+                    )
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _password = value.trim();
+                  });
+                },
+              ),
             ),
             Padding(
                 padding: const EdgeInsets.only(top: 70),
                 child: ElevatedButton.icon(
-                    icon: Icon(
-                      Icons.arrow_right,
-                      size: 30,
-                    ),
-                    label: Text("Login", style: TextStyle(fontSize: 16)),
-                    onPressed: () => _signin(_email, _password),)),
-                    
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                  ),
+                  icon: Icon(
+                    Icons.arrow_right,
+                    size: 30,
+                  ),
+                  label: Text("Login", style: TextStyle(fontSize: 16)),
+                  onPressed: () => _signin(_email, _password),
+                )),
             Padding(
                 padding: const EdgeInsets.only(top: 25),
                 child: TextButton(
@@ -79,15 +107,14 @@ class _LoginHomeState extends State<LoginHome> {
   }
 
   _signin(String _email, String _password) async {
-    try{
+    try {
       await auth.signInWithEmailAndPassword(email: _email, password: _password);
-  
-    //Success
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
-    } on FirebaseAuthException catch (error){
+
+      //Success
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+    } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
     }
-
   }
-
 }

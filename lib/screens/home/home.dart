@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
             top: 80.0,
           ),
           child: SingleChildScrollView(
-                      child: Column(children: <Widget>[
+            child: Column(children: <Widget>[
               Center(
                   child: Container(
                 width: 200.0,
@@ -123,11 +123,15 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Name:",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
-                      child: Text("Sandra Sandramann", style: TextStyle(fontSize: 20),),
+                      child: Text(
+                        "Sandra Sandramann",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     )
                   ])),
               Padding(
@@ -135,11 +139,15 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Geburtsdatum:",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
-                      child: Text("01.01.0000", style: TextStyle(fontSize: 20),),
+                      child: Text(
+                        "01.01.0000",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     )
                   ])),
               Padding(
@@ -147,45 +155,76 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Studiengang:",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
-                      child: Text("Informatik", style: TextStyle(fontSize: 20),),
+                      child: Text(
+                        "Informatik",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     )
                   ])),
               Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Row(children: <Widget>[
                     Text(
-                      "Mutter:",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      "Anzahl Kinder:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
-                      child: Text("ja", style: TextStyle(fontSize: 20),),
-                    )
-                  ])),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0),
-                    child: Text(
-                        "Verfügbarkeiten",
-                        style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                      child: Text(
+                        "1",
+                        style: TextStyle(fontSize: 20),
                       ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime.utc(2020, 01, 01), lastDay: DateTime.utc(2035, 12, 31)),
-                  ),
-                  Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: ElevatedButton.icon(
+                    ),
+                  ])),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(children: <Widget>[
+                    Text(
+                      "Über mich:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: SingleChildScrollView(
+                                              child: Text(
+                          "Ich bin cool",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ])),
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0),
+                child: Text(
+                  "Verfügbarkeiten",
+                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: TableCalendar(
+                    focusedDay: DateTime.now(),
+                    firstDay: DateTime.utc(2020, 01, 01),
+                    lastDay: DateTime.utc(2035, 12, 31)),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton.icon(
                     icon: Icon(
                       Icons.message,
                       size: 30,
                     ),
-                    label: Text("Schreib mir eine Nachricht", style: TextStyle(fontSize: 16)),
-                    onPressed: () =>{},))
+                    label: Text("Schreib mir eine Nachricht",
+                        style: TextStyle(fontSize: 16)),
+                    onPressed: () => {},
+                  ))
             ]),
           ),
         ),
