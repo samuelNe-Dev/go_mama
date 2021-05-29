@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_mama/firestore.dart';
 import 'package:go_mama/screens/home/home.dart';
 import 'package:go_mama/screens/register/registration.dart';
 
@@ -109,10 +110,10 @@ class _LoginHomeState extends State<LoginHome> {
   _signin(String _email, String _password) async {
     try {
       await auth.signInWithEmailAndPassword(email: _email, password: _password);
-
       //Success
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
     }
