@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,7 +16,7 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
-  String _email, _password = "";
+  String _email, _password, _passwordRepeat = "";
   String _firstName, _lastName, _birthday, _major, _amountChildren = "";
 
   final auth = FirebaseAuth.instance;
@@ -112,6 +111,11 @@ class _RegistrationState extends State<Registration> {
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(labelText: "Passwort bestätigen: "),
+              onChanged: (value) {
+                setState(() {
+                  _passwordRepeat = value.trim();
+                });
+              },
             ),
             Padding(
                 padding: const EdgeInsets.only(top: 70),
@@ -123,7 +127,13 @@ class _RegistrationState extends State<Registration> {
                     label: Text("Registrieren", style: TextStyle(fontSize: 16)),
                     onPressed: () => {
                           if (_email.contains("@stud.fra-uas.de")){
-                              _signup(_email, _password)
+                              if(_password == _passwordRepeat){
+                                _signup(_email, _password)
+                              }
+                              else{
+                                Fluttertoast.showToast(msg: "Passwort wurde nicht korrekt wiederholt!")
+                              }
+
                             }
                           else
                             {
