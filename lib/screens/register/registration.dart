@@ -18,7 +18,7 @@ class Registration extends StatefulWidget {
 
 class _RegistrationState extends State<Registration> {
   String _email, _password = "";
-  String _firstName, _lastName, _birthday, _major = "";
+  String _firstName, _lastName, _birthday, _major, _amountChildren = "";
 
   final auth = FirebaseAuth.instance;
 
@@ -82,6 +82,15 @@ class _RegistrationState extends State<Registration> {
               },
             ),
             TextFormField(
+              decoration: InputDecoration(labelText: "Anzahl Kinder: "),
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                setState(() {
+                  _amountChildren = value.trim();
+                });
+              },
+            ),
+            TextFormField(
               decoration:
                   InputDecoration(labelText: "Studentische Email - Addresse: "),
               keyboardType: TextInputType.emailAddress,
@@ -132,7 +141,7 @@ class _RegistrationState extends State<Registration> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-      userSetup(_firstName, _lastName, _birthday, _major);
+      userSetup(_firstName, _lastName, _birthday, _major, _amountChildren);
       //Success
 
       Navigator.of(context)
