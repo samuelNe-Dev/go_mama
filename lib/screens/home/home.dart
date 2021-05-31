@@ -1,7 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:go_mama/screens/home/Info.dart';
+import 'Finanzierung.dart';
+import 'hilfe_page.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -20,6 +25,7 @@ class _HomeState extends State<Home> {
   final screens = [
     Center(
       // Home Screen
+
       child: Scaffold(
         body: Container(
           margin: const EdgeInsets.only(
@@ -193,7 +199,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: SingleChildScrollView(
-                                              child: Text(
+                        child: Text(
                           "Ich bin cool",
                           style: TextStyle(fontSize: 20),
                         ),
@@ -253,7 +259,163 @@ class _HomeState extends State<Home> {
       ),
     ),
     Center(
-      // 'Hilfe' - page
+      // 'Info' - page
+      child: Scaffold(
+          backgroundColor: Colors.orange[400],
+          body: Center(
+            child: Column(
+              children: <Widget>[
+                //Container 1
+
+                Container(
+                  padding: const EdgeInsets.only(
+                    top: 40,
+                    right: 20,
+                    left: 20,
+                    bottom: 20,
+                  ),
+                  color: Colors.orange[400],
+                  child: RichText(
+                      text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Finanzierung\n\n',
+                          style: GoogleFonts.stintUltraCondensed(
+                            textStyle: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 35.0,
+                            ),
+                          )),
+                      TextSpan(
+                          text:
+                              'Falls Sie Schwierigkeiten beim Finanzierung haben oder keine Ahnung, wie man sich finanzieren kann,dann klicken Sie  ',
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                            ),
+                          )),
+                      TextSpan(
+                          text: 'Hier',
+                          style:
+                              TextStyle(color: Colors.purple, fontSize: 20.0),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              //Navigator.of(context).push(MaterialPageRoute(
+                              // builder: (context) => Finanzierung()));
+                            }),
+                    ],
+                  )),
+                ),
+
+                // Container 2
+
+                Container(
+                  padding: const EdgeInsets.only(
+                    top: 80,
+                    right: 20,
+                    left: 20,
+                    bottom: 20,
+                  ),
+                  color: Colors.orange[400],
+                  child: RichText(
+                      text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Hilfe\n\n',
+                          style: GoogleFonts.stintUltraCondensed(
+                            textStyle: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 35.0,
+                            ),
+                          )),
+                      TextSpan(
+                          text:
+                              'Falls Sie Hilfe oder Beratung brauchen, haben wir Links dafür bereit gestellt. Für weitere Informationen klicken Sie  ',
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                            ),
+                          )),
+                      TextSpan(
+                          text: 'Hier',
+                          style:
+                              TextStyle(color: Colors.purple, fontSize: 20.0),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              //Navigator.of(context).push(MaterialPageRoute(
+                              // builder: (context) => Hilfe()));
+                            }),
+                    ],
+                  )),
+                )
+              ],
+            ),
+          )),
+    )
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final auth = FirebaseAuth.instance;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Go Mama"),
+        actions: [
+          TextButton(
+            child: Text("Log out"),
+            style: TextButton.styleFrom(primary: Colors.black),
+            onPressed: () {
+              auth.signOut();
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginHome()));
+            },
+          ),
+        ],
+      ),
+      body: screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        iconSize: 30,
+        unselectedFontSize: 15,
+        selectedFontSize: 17,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.map),
+              label: "Karte",
+              backgroundColor: Colors.orange),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profil",
+              backgroundColor: Colors.orange),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              label: "Nachrichten",
+              backgroundColor: Colors.orange),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            label: "Info",
+            backgroundColor: Colors.orange,
+          )
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+/*
       child: Scaffold(
         body: Container(
           margin: const EdgeInsets.only(
@@ -264,7 +426,7 @@ class _HomeState extends State<Home> {
           child: Column(children: <Widget>[
             Center(
                 child: Text(
-              "Hilfe",
+              "Info",
               style: TextStyle(
                 fontSize: 40,
               ),
@@ -318,64 +480,5 @@ class _HomeState extends State<Home> {
           ]),
         ),
       ),
-    )
-  ];
 
-  @override
-  Widget build(BuildContext context) {
-    final auth = FirebaseAuth.instance;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Go Mama"),
-        actions: [
-          TextButton(
-            child: Text("Log out"),
-            style: TextButton.styleFrom(primary: Colors.black),
-            onPressed: () {
-              auth.signOut();
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginHome()));
-            },
-          ),
-        ],
-      ),
-      body: screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 30,
-        unselectedFontSize: 15,
-        selectedFontSize: 17,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-            backgroundColor: Colors.orange,
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.map),
-              label: "Karte",
-              backgroundColor: Colors.orange),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "Profil",
-              backgroundColor: Colors.orange),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: "Nachrichten",
-              backgroundColor: Colors.orange),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: "Hilfe",
-            backgroundColor: Colors.orange,
-          )
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-    );
-  }
-}
+      */
