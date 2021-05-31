@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:go_mama/screens/home/home.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:go_mama/screens/home/Info.dart';
 
 /*
 The main function is the first thing running, after running flutter or the dart file.

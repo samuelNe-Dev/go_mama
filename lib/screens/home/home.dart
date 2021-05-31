@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:go_mama/screens/home/Info.dart';
-import 'Finanzierung.dart';
-import 'hilfe_page.dart';
+import 'package:go_mama/screens/home/hilfe_page.dart';
+import 'package:go_mama/screens/home/Finanzierung.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -258,102 +257,110 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    Center(
-      // 'Info' - page
-      child: Scaffold(
-          backgroundColor: Colors.orange[400],
-          body: Center(
-            child: Column(
-              children: <Widget>[
-                //Container 1
+    //Center(
+    // 'Info' - page
 
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 40,
-                    right: 20,
-                    left: 20,
-                    bottom: 20,
-                  ),
-                  color: Colors.orange[400],
-                  child: RichText(
-                      text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Finanzierung\n\n',
-                          style: GoogleFonts.stintUltraCondensed(
-                            textStyle: TextStyle(
-                              color: Colors.purple,
-                              fontSize: 35.0,
-                            ),
-                          )),
-                      TextSpan(
-                          text:
-                              'Falls Sie Schwierigkeiten beim Finanzierung haben oder keine Ahnung, wie man sich finanzieren kann,dann klicken Sie  ',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20.0,
-                            ),
-                          )),
-                      TextSpan(
-                          text: 'Hier',
-                          style:
-                              TextStyle(color: Colors.purple, fontSize: 20.0),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              //Navigator.of(context).push(MaterialPageRoute(
-                              // builder: (context) => Finanzierung()));
-                            }),
-                    ],
-                  )),
+    Scaffold(
+        backgroundColor: Colors.orange[400],
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              //Container 1
+
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 40,
+                  right: 20,
+                  left: 20,
+                  bottom: 20,
                 ),
+                color: Colors.orange[400],
+                child: RichText(
+                    text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Finanzierung\n\n',
+                        style: GoogleFonts.stintUltraCondensed(
+                          textStyle: TextStyle(
+                            color: Colors.purple,
+                            fontSize: 35.0,
+                          ),
+                        )),
+                    TextSpan(
+                        text:
+                            'Falls Sie Schwierigkeiten beim Finanzierung haben oder keine Ahnung, wie man sich finanzieren kann,dann klicken Sie  ',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                          ),
+                        )),
+                    TextSpan(
+                        text: 'Hier',
+                        style: TextStyle(color: Colors.purple, fontSize: 20.0),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Scaffold(
+                              appBar: AppBar(
+                                title: Text('Hilfe Page'),
+                              ),
+                              body: Container(
+                                child: Text(
+                                    'Elterngeld Bis zu 67% des Einkommens, welches man zuvor verdient hat, k'),
+                              ),
+                            );
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            // builder: (context) => Finanzierung()));
+                          }),
+                  ],
+                )),
+              ),
 
-                // Container 2
+              // Container 2
 
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 80,
-                    right: 20,
-                    left: 20,
-                    bottom: 20,
-                  ),
-                  color: Colors.orange[400],
-                  child: RichText(
-                      text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Hilfe\n\n',
-                          style: GoogleFonts.stintUltraCondensed(
-                            textStyle: TextStyle(
-                              color: Colors.purple,
-                              fontSize: 35.0,
-                            ),
-                          )),
-                      TextSpan(
-                          text:
-                              'Falls Sie Hilfe oder Beratung brauchen, haben wir Links dafür bereit gestellt. Für weitere Informationen klicken Sie  ',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20.0,
-                            ),
-                          )),
-                      TextSpan(
-                          text: 'Hier',
-                          style:
-                              TextStyle(color: Colors.purple, fontSize: 20.0),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              //Navigator.of(context).push(MaterialPageRoute(
-                              // builder: (context) => Hilfe()));
-                            }),
-                    ],
-                  )),
-                )
-              ],
-            ),
-          )),
-    )
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 80,
+                  right: 20,
+                  left: 20,
+                  bottom: 20,
+                ),
+                color: Colors.orange[400],
+                child: RichText(
+                    text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Hilfe\n\n',
+                        style: GoogleFonts.stintUltraCondensed(
+                          textStyle: TextStyle(
+                            color: Colors.purple,
+                            fontSize: 35.0,
+                          ),
+                        )),
+                    TextSpan(
+                        text:
+                            'Falls Sie Hilfe oder Beratung brauchen, haben wir Links dafür bereit gestellt. Für weitere Informationen klicken Sie  ',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                          ),
+                        )),
+                    TextSpan(
+                        text: 'Hier',
+                        style: TextStyle(color: Colors.purple, fontSize: 20.0),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //builder: (context) => Hilfe()));
+                          }),
+                  ],
+                )),
+              )
+            ],
+          ),
+        )),
+    //)
   ];
 
   @override
