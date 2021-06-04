@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_mama/home_screen.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -224,25 +225,7 @@ class _HomeState extends State<Home> {
     ),
     Center(
       // 'Nachrichten' - page
-      child: Scaffold(
-        body: Container(
-          margin: const EdgeInsets.only(
-            left: 70.0,
-            right: 70.0,
-            top: 80.0,
-          ),
-          child: Column(children: <Widget>[
-            Center(
-                child: Text(
-              "Nachrichten",
-              style: TextStyle(
-                fontSize: 40,
-              ),
-              textAlign: TextAlign.center,
-            )),
-          ]),
-        ),
-      ),
+      child: HomeScreen()
     ),
     //Center(
     // 'Info' - page
