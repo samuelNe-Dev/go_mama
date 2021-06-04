@@ -12,7 +12,7 @@ class User {
   });
 }
 
-// YOU - current user
+// YOU -current user
 final User currentUser = User(
   id: 0,
   name: 'Nick Fury',
