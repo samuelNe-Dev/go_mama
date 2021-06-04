@@ -58,6 +58,19 @@ flutter:
     - images/map2.jpeg
     - images/example_profil.jpg
     - images/Go-Mama-logo.jpg
+    - images/anna.jpg
+    - images/sascha.jpg
+    - images/Öykü.jpg
+    - images/bella.jpeg
+    - images/alicia.jpg
+    - images/kim.jpg
+    - images/angelina.jpg
+    - images/monica.jpg
+
+
+
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

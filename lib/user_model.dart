@@ -35,20 +35,20 @@ final User captainAmerica = User(
 );
 final User hulk = User(
   id: 3,
-  name: 'Hulk',
-  imageUrl: 'images/hulk.jpg',
+  name: 'Bella Hadid',
+  imageUrl: 'images/bella.jpeg',
   isOnline: false,
 );
 final User scarletWitch = User(
   id: 4,
-  name: 'Scarlet Witch',
-  imageUrl: 'images/scarlet-witch.jpg',
+  name: 'Angelina jolie',
+  imageUrl: 'images/angelina.jpg',
   isOnline: false,
 );
 final User spiderMan = User(
   id: 5,
-  name: 'Spider Man',
-  imageUrl: 'images/spiderman.jpg',
+  name: 'Alicia Keys',
+  imageUrl: 'images/alicia.jpg',
   isOnline: true,
 );
 final User blackWindow = User(
@@ -59,13 +59,13 @@ final User blackWindow = User(
 );
 final User thor = User(
   id: 7,
-  name: 'Thor',
-  imageUrl: 'images/thor.png',
+  name: 'Kim Chung',
+  imageUrl: 'images/kim.jpg',
   isOnline: false,
 );
 final User captainMarvel = User(
   id: 8,
-  name: 'Captain Marvel',
-  imageUrl: 'images/captain-marvel.jpg',
+  name: 'Monica Bellucci',
+  imageUrl: 'images/monica.jpg',
   isOnline: false,
 );
