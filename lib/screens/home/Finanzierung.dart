@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../loginHome/loginHome.dart';
 import 'hilfe_page.dart';
 
 class Finanzierung extends StatefulWidget {
@@ -11,8 +13,17 @@ class _FinanzierungState extends State<Finanzierung> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Finanzierung'),
-      ),
+          title: Center(child: Text("Go Mama")),
+          actions: [
+            TextButton(
+              child: Text("Back"),
+              style: TextButton.styleFrom(primary: Colors.black),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        ),
       body: Center(
           child: Column(
         children: <Widget>[

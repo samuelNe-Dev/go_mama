@@ -255,6 +255,11 @@ class _HomeState extends State<Home> {
               //Container 1
 
               Container(
+                margin: const EdgeInsets.only(
+                  left: 70.0,
+                  right: 70.0,
+                  top: 50.0,
+                ),
                 padding: const EdgeInsets.only(
                   top: 40,
                   right: 20,
@@ -271,6 +276,7 @@ class _HomeState extends State<Home> {
                           textStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 35.0,
+                            fontWeight: FontWeight.w500,
                           ),
                         )),
                     TextSpan(
@@ -287,7 +293,7 @@ class _HomeState extends State<Home> {
                       style: TextStyle(color: Colors.purple, fontSize: 20.0),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Get.offAll(() => Finanzierung());
+                          Get.to(() => Finanzierung());
                         },
                     ),
                   ],
@@ -297,6 +303,11 @@ class _HomeState extends State<Home> {
               // Container 2
 
               Container(
+                margin: const EdgeInsets.only(
+                  left: 70.0,
+                  right: 70.0,
+                  top: 50.0,
+                ),
                 padding: const EdgeInsets.only(
                   top: 80,
                   right: 20,
@@ -313,6 +324,7 @@ class _HomeState extends State<Home> {
                           textStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 35.0,
+                            fontWeight: FontWeight.w500,
                           ),
                         )),
                     TextSpan(
@@ -329,7 +341,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(color: Colors.purple, fontSize: 20.0),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Get.offAll(() => Hilfe());
+                            Get.to(() => Hilfe());
                           }),
                   ],
                 )),

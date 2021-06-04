@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../loginHome/loginHome.dart';
 
 class Hilfe extends StatefulWidget {
   @override
@@ -10,8 +13,17 @@ class _HilfeState extends State<Hilfe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hilfe Page'),
-      ),
+          title: Center(child: Text("Go Mama")),
+          actions: [
+            TextButton(
+              child: Text("Back"),
+              style: TextButton.styleFrom(primary: Colors.black),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        ),
       body: Container(
         child: Text(
             'Elterngeld Bis zu 67% des Einkommens, welches man zuvor verdient hat, k'),
