@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -72,30 +73,16 @@ class _HomeState extends State<Home> {
       // 'Karte' - page
       child: Scaffold(
         body: Container(
-          margin: const EdgeInsets.only(
-            left: 70.0,
-            right: 70.0,
-            top: 80.0,
-          ),
-          child: Column(children: <Widget>[
-            Center(
-                child: Text(
-              "Karte",
-              style: TextStyle(
-                fontSize: 40,
-              ),
-              textAlign: TextAlign.center,
+            margin: const EdgeInsets.only(
+              left: 0.0,
+              right: 0.0,
+              top: 0.0,
+            ),
+            child: Image(
+              image: AssetImage('images/map2.jpeg'),
+              width: 900,
+              height: 900,
             )),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.blue,
-                ),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-            )
-          ]),
-        ),
       ),
     ),
     Center(
@@ -261,7 +248,7 @@ class _HomeState extends State<Home> {
     // 'Info' - page
 
     Scaffold(
-        backgroundColor: Colors.orange[400],
+        backgroundColor: Colors.white,
         body: Center(
           child: Column(
             children: <Widget>[
@@ -274,15 +261,15 @@ class _HomeState extends State<Home> {
                   left: 20,
                   bottom: 20,
                 ),
-                color: Colors.orange[400],
+                color: Colors.white,
                 child: RichText(
                     text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
                         text: 'Finanzierung\n\n',
-                        style: GoogleFonts.stintUltraCondensed(
+                        style: GoogleFonts.roboto(
                           textStyle: TextStyle(
-                            color: Colors.purple,
+                            color: Colors.black,
                             fontSize: 35.0,
                           ),
                         )),
@@ -296,22 +283,13 @@ class _HomeState extends State<Home> {
                           ),
                         )),
                     TextSpan(
-                        text: 'Hier',
-                        style: TextStyle(color: Colors.purple, fontSize: 20.0),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Scaffold(
-                              appBar: AppBar(
-                                title: Text('Hilfe Page'),
-                              ),
-                              body: Container(
-                                child: Text(
-                                    'Elterngeld Bis zu 67% des Einkommens, welches man zuvor verdient hat, k'),
-                              ),
-                            );
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            // builder: (context) => Finanzierung()));
-                          }),
+                      text: 'Hier',
+                      style: TextStyle(color: Colors.purple, fontSize: 20.0),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.offAll(() => Finanzierung());
+                        },
+                    ),
                   ],
                 )),
               ),
@@ -325,15 +303,15 @@ class _HomeState extends State<Home> {
                   left: 20,
                   bottom: 20,
                 ),
-                color: Colors.orange[400],
+                color: Colors.white,
                 child: RichText(
                     text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
                         text: 'Hilfe\n\n',
-                        style: GoogleFonts.stintUltraCondensed(
+                        style: GoogleFonts.roboto(
                           textStyle: TextStyle(
-                            color: Colors.purple,
+                            color: Colors.black,
                             fontSize: 35.0,
                           ),
                         )),
@@ -351,8 +329,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(color: Colors.purple, fontSize: 20.0),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //builder: (context) => Hilfe()));
+                            Get.offAll(() => Hilfe());
                           }),
                   ],
                 )),
