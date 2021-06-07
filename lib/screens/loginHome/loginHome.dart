@@ -91,7 +91,7 @@ class _LoginHomeState extends State<LoginHome> {
                   onPressed: () => _signin(_email, _password),
                 )),
             Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.only(top: 25),
                 child: TextButton(
                   child: Text(
                     "Noch kein Account? Klicke hier um zur Registrierung zu kommen!",

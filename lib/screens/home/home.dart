@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+eimport 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -210,8 +210,12 @@ class _HomeState extends State<Home> {
                       Icons.message,
                       size: 30,
                     ),
-                    label: Text("Schreib mir eine Nachricht",
+                    label: Text("Nachricht schreiben",
                         style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 16))),
+                    style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                  ),
                     onPressed: () => {},
                   ))
             ]),

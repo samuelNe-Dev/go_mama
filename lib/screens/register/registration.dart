@@ -47,7 +47,7 @@ class _RegistrationState extends State<Registration> {
           child: SingleChildScrollView(
               child: Column(children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(bottom: 50),
+                padding: const EdgeInsets.only(bottom: 25),
                 child: Text("Registrierung", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 40, fontWeight: FontWeight.w600)))),
             TextFormField(
               decoration: InputDecoration(labelText: "Vorname: "),
