@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_mama/firestore.dart';
 import 'package:go_mama/screens/home/home.dart';
 import 'package:go_mama/screens/register/registration.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /*
 This is the starting screen of the App with a login possibility 
@@ -34,8 +35,8 @@ class _LoginHomeState extends State<LoginHome> {
               child: Column(children: <Widget>[
             Image.asset("images/Go-Mama-logo.jpg", width: 300.0, height: 300.0),
             Padding(
-                padding: const EdgeInsets.only(bottom: 70),
-                child: Text("Log dich ein!", style: TextStyle(fontSize: 30))),
+                padding: const EdgeInsets.only(bottom: 50),
+                child: Text("Log dich ein!", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.w600)))),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -76,7 +77,7 @@ class _LoginHomeState extends State<LoginHome> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 70),
+                padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -86,15 +87,16 @@ class _LoginHomeState extends State<LoginHome> {
                     Icons.arrow_right,
                     size: 30,
                   ),
-                  label: Text("Login", style: TextStyle(fontSize: 16)),
+                  label: Text("Login", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 16))),
                   onPressed: () => _signin(_email, _password),
                 )),
             Padding(
-                padding: const EdgeInsets.only(top: 25),
+                padding: const EdgeInsets.only(top: 15),
                 child: TextButton(
                   child: Text(
                     "Noch kein Account? Klicke hier um zur Registrierung zu kommen!",
                     textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 16))
                   ),
                   onPressed: () {
                     Navigator.pushReplacement(

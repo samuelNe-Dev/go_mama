@@ -38,32 +38,33 @@ class _HomeState extends State<Home> {
             Center(
                 child: Text(
               "Startseite",
-              style: TextStyle(
+              style: GoogleFonts.poppins( textStyle: TextStyle(
                 fontSize: 40,
-              ),
+                fontWeight: FontWeight.w600
+              )),
               textAlign: TextAlign.center,
             )),
             Center(
                 child: Padding(
-                    padding: const EdgeInsets.only(top: 200),
+                    padding: const EdgeInsets.only(top: 160),
                     child: Text(
                       "Ich bin lieber glücklich als perfekt.",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins( textStyle: TextStyle(
                           fontSize: 35,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.italic,
-                          color: Colors.deepOrange),
+                          color: Colors.deepOrange)),
                       textAlign: TextAlign.center,
                     ))),
             Center(
                 child: Padding(
-                    padding: const EdgeInsets.only(top: 80),
+                    padding: const EdgeInsets.only(top: 100),
                     child: Text(
                       "Tägliche Tipps und Motivationssprüche, um dich jeden Tag positiv zu beeinflussen!",
-                      style: TextStyle(
-                        fontSize: 13,
+                      style: GoogleFonts.poppins( textStyle: TextStyle(
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
-                      ),
+                      )),
                       textAlign: TextAlign.center,
                     )))
           ]),
@@ -116,14 +117,13 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Name:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "Sandra Sandramann",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -132,14 +132,13 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Geburtsdatum:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: GoogleFonts.poppins( textStyle:TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "01.01.0000",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -148,14 +147,13 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Studiengang:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "Informatik",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -164,14 +162,13 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Anzahl Kinder:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "1",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
                       ),
                     ),
                   ])),
@@ -180,15 +177,14 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Über mich:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: SingleChildScrollView(
                         child: Text(
-                          "Ich bin cool",
-                          style: TextStyle(fontSize: 20),
+                          "Hilfsbereit.",
+                          style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
                         ),
                       ),
                     ),
@@ -197,7 +193,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.only(top: 50.0),
                 child: Text(
                   "Verfügbarkeiten",
-                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+                  style: GoogleFonts.poppins( textStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 20)),
                 ),
               ),
               Padding(
@@ -215,7 +211,7 @@ class _HomeState extends State<Home> {
                       size: 30,
                     ),
                     label: Text("Schreib mir eine Nachricht",
-                        style: TextStyle(fontSize: 16)),
+                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 16))),
                     onPressed: () => {},
                   ))
             ]),
@@ -241,7 +237,7 @@ class _HomeState extends State<Home> {
                 margin: const EdgeInsets.only(
                   left: 70.0,
                   right: 70.0,
-                  top: 50.0,
+                  top: 40.0,
                 ),
                 padding: const EdgeInsets.only(
                   top: 40,
@@ -255,25 +251,25 @@ class _HomeState extends State<Home> {
                   children: <TextSpan>[
                     TextSpan(
                         text: 'Finanzierung\n\n',
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 35.0,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         )),
                     TextSpan(
                         text:
                             'Falls Sie Schwierigkeiten beim Finanzierung haben oder keine Ahnung, wie man sich finanzieren kann,dann klicken Sie  ',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 20.0,
+                            fontSize: 18.0,
                           ),
                         )),
                     TextSpan(
-                      text: 'Hier',
-                      style: TextStyle(color: Colors.purple, fontSize: 20.0),
+                      text: 'hier',
+                      style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 18.0)),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Get.to(() => Finanzierung());
@@ -292,7 +288,7 @@ class _HomeState extends State<Home> {
                   top: 50.0,
                 ),
                 padding: const EdgeInsets.only(
-                  top: 80,
+                  top: 60,
                   right: 20,
                   left: 20,
                   bottom: 20,
@@ -307,21 +303,21 @@ class _HomeState extends State<Home> {
                           textStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 35.0,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
                         )),
                     TextSpan(
                         text:
                             'Falls Sie Hilfe oder Beratung brauchen, haben wir Links dafür bereit gestellt. Für weitere Informationen klicken Sie  ',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 20.0,
+                            fontSize: 18.0,
                           ),
                         )),
                     TextSpan(
-                        text: 'Hier',
-                        style: TextStyle(color: Colors.purple, fontSize: 20.0),
+                        text: 'hier',
+                        style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 18.0)),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             Get.to(() => Hilfe());
@@ -332,7 +328,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         )),
-    //)
   ];
 
   @override
@@ -393,71 +388,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-/*
-      child: Scaffold(
-        body: Container(
-          margin: const EdgeInsets.only(
-            left: 70.0,
-            right: 70.0,
-            top: 80.0,
-          ),
-          child: Column(children: <Widget>[
-            Center(
-                child: Text(
-              "Info",
-              style: TextStyle(
-                fontSize: 40,
-              ),
-              textAlign: TextAlign.center,
-            )),
-            Padding(
-              padding: const EdgeInsets.only(top: 70),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Elterngeld",
-                    style: TextStyle(fontSize: 25),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Kindergeld",
-                    style: TextStyle(fontSize: 25),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Mutterschaftsgeld",
-                    style: TextStyle(fontSize: 25),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Bafög",
-                    style: TextStyle(fontSize: 25),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Finanzierung",
-                    style: TextStyle(fontSize: 25),
-                  )),
-            ),
-          ]),
-        ),
-      ),
-
-      */

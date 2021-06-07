@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_mama/firestore.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:go_mama/screens/verify/verify.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /*
 This displays the registration screen. If the registration is fully admitted,
@@ -46,8 +47,8 @@ class _RegistrationState extends State<Registration> {
           child: SingleChildScrollView(
               child: Column(children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(bottom: 70),
-                child: Text("Registrierung", style: TextStyle(fontSize: 40))),
+                padding: const EdgeInsets.only(bottom: 50),
+                child: Text("Registrierung", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 40, fontWeight: FontWeight.w600)))),
             TextFormField(
               decoration: InputDecoration(labelText: "Vorname: "),
               onChanged: (value) {
@@ -118,13 +119,17 @@ class _RegistrationState extends State<Registration> {
               },
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 70),
+                padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton.icon(
                     icon: Icon(
                       Icons.arrow_right,
                       size: 30,
                     ),
                     label: Text("Registrieren", style: TextStyle(fontSize: 16)),
+                    style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                  ),
                     onPressed: () => {
                           if (_email.contains("@stud.fra-uas.de")){
                               if(_password == _passwordRepeat){
