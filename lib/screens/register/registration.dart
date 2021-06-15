@@ -14,6 +14,7 @@ This displays the registration screen. If the registration is fully admitted,
 the user gets back to the starting - login page.
 */
 
+/*TEST tEsT TEST TEST*/ 
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();
