@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:go_mama/screens/home/hilfe_page.dart';
 import 'package:go_mama/screens/home/Finanzierung.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:go_mama/Map.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -38,10 +42,9 @@ class _HomeState extends State<Home> {
             Center(
                 child: Text(
               "Startseite",
-              style: GoogleFonts.poppins( textStyle: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.w600
-              )),
+              style: GoogleFonts.poppins(
+                  textStyle:
+                      TextStyle(fontSize: 40, fontWeight: FontWeight.w600)),
               textAlign: TextAlign.center,
             )),
             Center(
@@ -49,11 +52,12 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(top: 160),
                     child: Text(
                       "Ich bin lieber glücklich als perfekt.",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.deepOrange)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepOrange)),
                       textAlign: TextAlign.center,
                     ))),
             Center(
@@ -61,7 +65,8 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(top: 100),
                     child: Text(
                       "Tägliche Tipps und Motivationssprüche, um dich jeden Tag positiv zu beeinflussen!",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       )),
@@ -73,8 +78,9 @@ class _HomeState extends State<Home> {
     ),
     Center(
       // 'Karte' - page
-      child: Scaffold(
-        body: Container(
+      child: Map(),
+      /*
+        Container(
             margin: const EdgeInsets.only(
               left: 0.0,
               right: 0.0,
@@ -84,8 +90,9 @@ class _HomeState extends State<Home> {
               image: AssetImage('images/map3.jpeg'),
               width: 900,
               height: 900,
-            )),
-      ),
+            )
+            ),
+            */
     ),
     Center(
       // 'Profil' - page
@@ -117,13 +124,16 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Name:",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "Sandra Sandramann",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -132,13 +142,16 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Geburtsdatum:",
-                      style: GoogleFonts.poppins( textStyle:TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "01.01.0000",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -147,13 +160,16 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Studiengang:",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "Informatik",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
                   ])),
@@ -162,13 +178,16 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Anzahl Kinder:",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
                         "1",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(fontSize: 18)),
                       ),
                     ),
                   ])),
@@ -177,14 +196,17 @@ class _HomeState extends State<Home> {
                   child: Row(children: <Widget>[
                     Text(
                       "Über mich:",
-                      style: GoogleFonts.poppins( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: SingleChildScrollView(
                         child: Text(
                           "Hilfsbereit.",
-                          style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 18)),
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(fontSize: 18)),
                         ),
                       ),
                     ),
@@ -193,7 +215,9 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.only(top: 50.0),
                 child: Text(
                   "Verfügbarkeiten",
-                  style: GoogleFonts.poppins( textStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 20)),
+                  style: GoogleFonts.poppins(
+                      textStyle:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 20)),
                 ),
               ),
               Padding(
@@ -211,11 +235,12 @@ class _HomeState extends State<Home> {
                       size: 30,
                     ),
                     label: Text("Nachricht schreiben",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(fontSize: 16))),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(fontSize: 16))),
                     style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                    ),
                     onPressed: () => {},
                   ))
             ]),
@@ -224,9 +249,9 @@ class _HomeState extends State<Home> {
       ),
     ),
     Center(
-      // 'Nachrichten' - page
-      child: HomeScreen()
-    ),
+        // 'Nachrichten' - page
+        child: HomeScreen()),
+
     //Center(
     // 'Info' - page
 
@@ -273,7 +298,9 @@ class _HomeState extends State<Home> {
                         )),
                     TextSpan(
                       text: 'hier',
-                      style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 18.0)),
+                      style: GoogleFonts.poppins(
+                          textStyle:
+                              TextStyle(color: Colors.orange, fontSize: 18.0)),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Get.to(() => Finanzierung());
@@ -321,7 +348,9 @@ class _HomeState extends State<Home> {
                         )),
                     TextSpan(
                         text: 'hier',
-                        style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 18.0)),
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                                color: Colors.orange, fontSize: 18.0)),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             Get.to(() => Hilfe());
