@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
               top: 0.0,
             ),
             child: Image(
-              image: AssetImage('images/map2.jpeg'),
+              image: AssetImage('images/map3.jpeg'),
               width: 900,
               height: 900,
             )

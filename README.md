@@ -1,4 +1,4 @@
-# go_mama
+# GoMama App
 
 A new Flutter project.
 
