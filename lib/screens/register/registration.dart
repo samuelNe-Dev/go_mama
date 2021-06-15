@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:go_mama/firestore.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:go_mama/screens/register/agb.dart';
 import 'package:go_mama/screens/verify/verify.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +23,7 @@ class _RegistrationState extends State<Registration> {
   String _email, _password, _passwordRepeat = "";
   String _firstName, _lastName, _birthday, _major, _amountChildren = "";
 
+  bool _isChecked = false;
   final auth = FirebaseAuth.instance;
 
   @override
@@ -118,6 +122,29 @@ class _RegistrationState extends State<Registration> {
                 });
               },
             ),
+            CheckboxListTile(
+            value: _isChecked,
+            onChanged: (bool val) => setState(() => _isChecked = val),
+            title: RichText(text: TextSpan(children:<TextSpan>[
+                    TextSpan(
+                        text:
+                            'Ich akzeptiere die ',
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.0,
+                          ),
+                        )),
+                    TextSpan(
+                        text: "AGB's.",
+                        style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 16.0)),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.to(() => AGB());
+                          }),
+                  ],) ),
+            controlAffinity: ListTileControlAffinity.trailing,
+          ),
             Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton.icon(
@@ -133,7 +160,12 @@ class _RegistrationState extends State<Registration> {
                     onPressed: () => {
                           if (_email.contains("@stud.fra-uas.de")){
                               if(_password == _passwordRepeat){
-                                _signup(_email, _password)
+                                if(_isChecked==true){
+                                  _signup(_email, _password)
+                                }
+                                else{
+                                  Fluttertoast.showToast(msg: "AGB's wurden noch nicht akzeptiert!")
+                                }
                               }
                               else{
                                 Fluttertoast.showToast(msg: "Passwort wurde nicht korrekt wiederholt!")
