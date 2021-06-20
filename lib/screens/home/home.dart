@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_mama/home_screen.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:go_mama/user_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:go_mama/screens/home/hilfe_page.dart';
@@ -26,6 +28,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  var user = FirebaseAuth.instance.currentUser;
+  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('Users').snapshots();
+  
 
   final screens = [
     Center(
@@ -117,11 +122,20 @@ class _HomeState extends State<Home> {
                         style: BorderStyle.solid),
                     image: new DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("images/example_profil.jpg"))),
+                        image: AssetImage("images/default-image.jpg"))),
               )),
-              Padding(
+              
+              StreamBuilder(
+                    stream: FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser.uid.toString()).snapshots(),
+                    builder: (context, snapshot){
+                      if(!snapshot.hasData) return Text('Loading profil data, Please wait.');
+                      return Column(
+                        children: <Widget>[
+                          Padding(
                   padding: const EdgeInsets.only(top: 50.0),
-                  child: Row(children: <Widget>[
+                  child: 
+                  
+                  Row(children: <Widget>[
                     Text(
                       "Name:",
                       style: GoogleFonts.poppins(
@@ -131,12 +145,13 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
-                        "Sandra Sandramann",
+                        snapshot.data["Vorname"].toString() + " " + snapshot.data["Nachname"],
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(fontSize: 18)),
                       ),
                     )
-                  ])),
+                  ]),
+                    ),
               Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Row(children: <Widget>[
@@ -149,7 +164,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
-                        "01.01.0000",
+                        snapshot.data["Geburtsdatum"].toString(),
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(fontSize: 18)),
                       ),
@@ -167,7 +182,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
-                        "Informatik",
+                        snapshot.data["Studiengang"].toString(),
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(fontSize: 18)),
                       ),
@@ -185,7 +200,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text(
-                        "1",
+                        snapshot.data["Anzahl Kinder"].toString(),
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(fontSize: 18)),
                       ),
@@ -204,13 +219,17 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.only(left: 18.0),
                       child: SingleChildScrollView(
                         child: Text(
-                          "Hilfsbereit.",
+                          "",
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(fontSize: 18)),
                         ),
                       ),
                     ),
                   ])),
+                        ]
+                      );
+                    }
+                    ),
               Padding(
                 padding: const EdgeInsets.only(top: 50.0),
                 child: Text(
