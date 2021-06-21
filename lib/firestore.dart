@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<void> userSetup(String firstName, String lastName, String birthday,String major, String amountChildren) async {
+Future<void> userSetup(String firstName, String lastName, String birthday,String plz, String major, String amountChildren, String imageURL) async {
   CollectionReference users = FirebaseFirestore.instance.collection("Users");
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
@@ -10,8 +10,9 @@ Future<void> userSetup(String firstName, String lastName, String birthday,String
     "Nachname" : lastName,
     "Geburtsdatum" : birthday,
     "Studiengang" : major,
+    "PLZ": plz,
     "Anzahl Kinder" : amountChildren,
+    "ImageURL" : null
   });
-  print(uid + ", " + firstName + ", " + lastName + ", " + birthday + ", " + major);
   return;
 }

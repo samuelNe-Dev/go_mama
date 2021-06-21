@@ -42,6 +42,8 @@ dependencies:
   cloud_firestore: ^2.2.0
   responsive_framework: ^0.1.0
   get: ^4.1.4
+  image_picker: ^0.8.0+3
+  
   
 dev_dependencies:
   flutter_test:
