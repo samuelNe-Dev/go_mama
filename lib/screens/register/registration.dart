@@ -22,7 +22,7 @@ class Registration extends StatefulWidget {
 
 class _RegistrationState extends State<Registration> {
   String _email, _password, _passwordRepeat = "";
-  String _firstName, _lastName, _birthday, _major, _amountChildren = "";
+  String _firstName, _lastName, _birthday, _plz, _major, _amountChildren = "";
 
   bool _isChecked = false;
   final auth = FirebaseAuth.instance;
@@ -75,6 +75,14 @@ class _RegistrationState extends State<Registration> {
               onChanged: (value) {
                 setState(() {
                   _birthday = value.trim();
+                });
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: "PLZ: "),
+              onChanged: (value) {
+                setState(() {
+                  _plz = value.trim();
                 });
               },
             ),
@@ -147,7 +155,7 @@ class _RegistrationState extends State<Registration> {
             controlAffinity: ListTileControlAffinity.trailing,
           ),
             Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 25),
                 child: ElevatedButton.icon(
                     icon: Icon(
                       Icons.arrow_right,
@@ -189,7 +197,7 @@ class _RegistrationState extends State<Registration> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-      userSetup(_firstName, _lastName, _birthday, _major, _amountChildren);
+      userSetup(_firstName, _lastName, _birthday, _plz, _major, _amountChildren, "images/default-image.jpg");
       //Success
 
       Navigator.of(context)
