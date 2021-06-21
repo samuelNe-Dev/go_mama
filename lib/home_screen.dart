@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'chat_screen.dart';
 import 'message_model.dart';
 
-
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -82,8 +80,8 @@ class HomeScreen extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                chat.sender.isOnline
-                                    ? Container(
+
+                                /* Container(
                                         margin: const EdgeInsets.only(left: 5),
                                         width: 7,
                                         height: 7,
@@ -94,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                                       )
                                     : Container(
                                         child: null,
-                                      ),
+                                      ), */
                               ],
                             ),
                             Text(
@@ -115,11 +113,12 @@ class HomeScreen extends StatelessWidget {
                           child: Text(
                             chat.text,
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 18,
                               color: Colors.black54,
                             ),
                             overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                            maxLines:
+                                2, // maximum line of chat message per contacht shown in main chat menu
                           ),
                         ),
                       ],
