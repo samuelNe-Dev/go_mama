@@ -15,7 +15,7 @@ class Message {
   });
 }
 
-// EXAMPLE CHATS ON HOME SCREEN
+// example chats of the main user chatting with a person
 List<Message> chats = [
   Message(
     sender: ironMan,
@@ -72,20 +72,20 @@ List<Message> chats = [
 List<Message> messages = [
   Message(
     sender: ironMan,
-    time: '4:30 PM',
-    text: 'Take you time',
+    time: '2:43 PM',
+    text: 'Alright, will wait for your answer',
     unread: true,
   ),
   Message(
     sender: currentUser,
-    time: '4:37 PM',
+    time: '2:41 PM',
     text: 'Let me check my scheldule',
     unread: true,
   ),
   Message(
     sender: ironMan,
-    time: '4:40 PM',
-    text: 'Hey! Are you available this evening?',
+    time: '2:35 PM',
+    text: 'Hey, wanna meet this evening?',
     unread: true,
   )
 ];
