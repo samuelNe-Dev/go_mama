@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -26,25 +27,81 @@ class _Map extends State<Map> {
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
+  BitmapDescriptor _markerIcon;
+
+  Future<void> _createMarkerImageFromAsset(BuildContext context) async {
+    if (_markerIcon == null) {
+      final ImageConfiguration imageConfiguration =
+          createLocalImageConfiguration(context);
+      BitmapDescriptor.fromAssetImage(imageConfiguration, 'images/marker.png')
+          .then(_updateBitmap);
+    }
+  }
+
+  void _updateBitmap(BitmapDescriptor bitmap) {
+    if (this.mounted) {
+      setState(() {
+        _markerIcon = bitmap;
+      });
+    }
+  }
+
+  Future<Set<Marker>> _createMarkers(BuildContext context) async {
+    List<Marker> mMarkers = [];
+    _createMarkerImageFromAsset(context);
+    mMarkers.add(Marker(
+            markerId: MarkerId("1"),
+            position: LatLng(50.130121, 8.692542),
+            icon: _markerIcon,
+            onTap: () {},
+            infoWindow: InfoWindow(
+              title: 'Sarah',
+            )) // Marker
+        );
+    mMarkers.add(Marker(
+            markerId: MarkerId("2"),
+            position: LatLng(50.150121, 8.752542),
+            icon: _markerIcon,
+            infoWindow: InfoWindow(
+              title: 'Jasimen',
+            )) // Marker
+        );
+
+    return mMarkers.toSet();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var completer = Completer;
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      /*
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text(''),
-        icon: Icon(Icons.my_location),
-      ),
-      */
+      body: FutureBuilder(
+          future: _createMarkers(context),
+          builder: (BuildContext context, AsyncSnapshot snapShot) {
+            switch (snapShot.connectionState) {
+              case ConnectionState.none:
+                return Text('Error');
+                break;
+              case ConnectionState.waiting:
+                return _loading();
+                break;
+              case ConnectionState.active:
+                return _loading();
+                break;
+              case ConnectionState.done:
+                return GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition: _kGooglePlex,
+                  markers: snapShot.data,
+                );
+                break;
+            }
+            return Container();
+          }),
     );
   }
 
@@ -53,42 +110,11 @@ class _Map extends State<Map> {
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 
-  Future<Position> _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+  _loading() {
+    return Container(
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
-
-mixin _controller {}

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ResponsiveBreakpoint.autoScale(800, name: TABLET),
           ResponsiveBreakpoint.autoScale(1000, name: TABLET),
         ],
-      ),
+    ),
       title: "Go Mama",
       theme: ThemeData(
         primarySwatch: Colors.orange,
