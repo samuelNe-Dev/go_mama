@@ -13,7 +13,6 @@ import 'package:go_mama/screens/home/hilfe_page.dart';
 import 'package:go_mama/screens/home/Finanzierung.dart';
 import 'package:go_mama/Map.dart';
 
-
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
 or tips. Additionally there is a fixed bottom navigation bar where the user can 
@@ -82,7 +81,7 @@ class _HomeState extends State<Home> {
     ),
     Center(
       // 'Karte' - page
-      child: Map(),
+      child: Our_Map(),
       /*
         Container(
             margin: const EdgeInsets.only(
@@ -115,8 +114,7 @@ class _HomeState extends State<Home> {
                       .doc(FirebaseAuth.instance.currentUser.uid.toString())
                       .snapshots(),
                   builder: (context, snapshot) {
-                    if (!snapshot.hasData)
-                      return Text('...');
+                    if (!snapshot.hasData) return Text('...');
                     return Column(children: <Widget>[
                       ImageProfile(snapshot: snapshot),
                       Padding(
@@ -447,9 +445,5 @@ class _HomeState extends State<Home> {
         },
       ),
     );
-
-
-
-
   }
 }
