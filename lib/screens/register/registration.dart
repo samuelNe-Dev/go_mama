@@ -192,7 +192,6 @@ class _RegistrationState extends State<Registration> {
           ])),
         ));
   }
-
   _signup(String _email, String _password) async {
     try {
       await auth.createUserWithEmailAndPassword(
