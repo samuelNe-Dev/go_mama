@@ -175,10 +175,7 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
                   ),
-                  onPressed: () => {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => EditProfil()))
-                  },
+                  onPressed: () => {},
                 )),
             Padding(
               padding: const EdgeInsets.only(top: 50.0),
