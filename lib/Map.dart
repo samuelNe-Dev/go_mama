@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:go_mama/screens/profile/otherUserProfile.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 /*
@@ -59,9 +60,14 @@ class _Map extends State<Our_Map> {
               markerId: MarkerId(id.toString()),
               position: LatLng(geoLocation.latitude, geoLocation.longitude),
               icon: _markerIcon,
-              onTap: () {},
               infoWindow: InfoWindow(
-                title: data['Vorname'],
+                title: data['Vorname'] + " " + data["Nachname"],
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => OtherUserProfile(
+                            userUID: queryDocumentSnapshot.id.toString(),
+                          )));
+                },
               )) // Marker
           );
       id++;

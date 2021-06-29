@@ -19,6 +19,9 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Go Mama"),
+      ),
       body: Container(
         margin: const EdgeInsets.only(
           left: 70.0,
