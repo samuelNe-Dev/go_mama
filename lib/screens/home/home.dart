@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
     ),
     Center(
       // 'Profil' - page
-      child: OtherUserProfile(userUID: "poHMKGb1JVdVX9Dmjjr8yqcCNSx1",),
+      child: CurrentUserProfile(),
     ),
     Center(
         // 'Nachrichten' - page
