@@ -14,7 +14,7 @@ This displays the registration screen. If the registration is fully admitted,
 the user gets back to the starting - login page.
 */
 
-/*TEST tEsT TEST TEST*/ 
+/*TEST tEsT TEST TEST*/
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();
@@ -53,7 +53,10 @@ class _RegistrationState extends State<Registration> {
               child: Column(children: <Widget>[
             Padding(
                 padding: const EdgeInsets.only(bottom: 25),
-                child: Text("Registrierung", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 40, fontWeight: FontWeight.w600)))),
+                child: Text("Registrierung",
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.w600)))),
             TextFormField(
               decoration: InputDecoration(labelText: "Vorname: "),
               onChanged: (value) {
@@ -132,28 +135,32 @@ class _RegistrationState extends State<Registration> {
               },
             ),
             CheckboxListTile(
-            value: _isChecked,
-            onChanged: (bool val) => setState(() => _isChecked = val),
-            title: RichText(text: TextSpan(children:<TextSpan>[
-                    TextSpan(
-                        text:
-                            'Ich akzeptiere die ',
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16.0,
-                          ),
-                        )),
-                    TextSpan(
-                        text: "AGB's.",
-                        style: GoogleFonts.poppins( textStyle: TextStyle(color: Colors.orange, fontSize: 16.0)),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.to(() => AGB());
-                          }),
-                  ],) ),
-            controlAffinity: ListTileControlAffinity.trailing,
-          ),
+              value: _isChecked,
+              onChanged: (bool val) => setState(() => _isChecked = val),
+              title: RichText(
+                  text: TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Ich akzeptiere die ',
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16.0,
+                        ),
+                      )),
+                  TextSpan(
+                      text: "AGB's.",
+                      style: GoogleFonts.poppins(
+                          textStyle:
+                              TextStyle(color: Colors.orange, fontSize: 16.0)),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.to(() => AGB());
+                        }),
+                ],
+              )),
+              controlAffinity: ListTileControlAffinity.trailing,
+            ),
             Padding(
                 padding: const EdgeInsets.only(top: 25),
                 child: ElevatedButton.icon(
@@ -163,23 +170,32 @@ class _RegistrationState extends State<Registration> {
                     ),
                     label: Text("Registrieren", style: TextStyle(fontSize: 16)),
                     style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                    ),
                     onPressed: () => {
-                          if (_email.contains("@stud.fra-uas.de")){
-                              if(_password == _passwordRepeat){
-                                if(_isChecked==true){
-                                  _signup(_email, _password)
+                          if (_email.contains("@stud.fra-uas.de") ||
+                              _email.contains("@gmail.com") ||
+                              _email.contains("@outlook.com") ||
+                              _email.contains("@yahoo.com"))
+                            {
+                              if (_password == _passwordRepeat)
+                                {
+                                  if (_isChecked == true)
+                                    {_signup(_email, _password)}
+                                  else
+                                    {
+                                      Fluttertoast.showToast(
+                                          msg:
+                                              "AGB's wurden noch nicht akzeptiert!")
+                                    }
                                 }
-                                else{
-                                  Fluttertoast.showToast(msg: "AGB's wurden noch nicht akzeptiert!")
+                              else
+                                {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Passwort wurde nicht korrekt wiederholt!")
                                 }
-                              }
-                              else{
-                                Fluttertoast.showToast(msg: "Passwort wurde nicht korrekt wiederholt!")
-                              }
-
                             }
                           else
                             {
@@ -192,11 +208,13 @@ class _RegistrationState extends State<Registration> {
           ])),
         ));
   }
+
   _signup(String _email, String _password) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-      userSetup(_firstName, _lastName, _birthday, _plz, _major, _amountChildren, "images/default-image.jpg");
+      userSetup(_firstName, _lastName, _birthday, _plz, _major, _amountChildren,
+          "images/default-image.jpg");
       //Success
 
       Navigator.of(context)
