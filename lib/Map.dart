@@ -94,7 +94,7 @@ class _Map extends State<Our_Map> {
       }
 
       mMarkers.add(Marker(
-              markerId: MarkerId(id.toString()),
+              markerId: MarkerId(queryDocumentSnapshot.id.toString()),
               position: location,
               icon: _markerIcon,
               infoWindow: InfoWindow(

@@ -174,10 +174,7 @@ class _RegistrationState extends State<Registration> {
                           borderRadius: BorderRadius.circular(15.0)),
                     ),
                     onPressed: () => {
-                          if (_email.contains("@stud.fra-uas.de") ||
-                              _email.contains("@gmail.com") ||
-                              _email.contains("@outlook.com") ||
-                              _email.contains("@yahoo.com"))
+                          if (_email.contains("@stud.fra-uas.de") )
                             {
                               if (_password == _passwordRepeat)
                                 {
