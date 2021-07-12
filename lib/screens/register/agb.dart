@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class AGB extends StatelessWidget {
   @override
@@ -14,13 +12,7 @@ class AGB extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(
           children: <Widget>[
-            //Container 1
             Container(
-              /*margin: const EdgeInsets.only(
-                  left: 70.0,
-                  right: 70.0,
-                  top: 40.0,
-                ),*/
               padding: const EdgeInsets.only(
                 top: 0,
                 right: 20,

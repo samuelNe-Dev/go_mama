@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_mama/screens/profile/otherUserProfile.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:math';
 
 /*
 This is the chat screen, where the conversation with another user is visible and
@@ -109,61 +107,6 @@ class _Map extends State<Our_Map> {
           );
       id++;
     }
-
-/*
-
-    List zipCodes = [
-      [50.1153, 8.6823],
-      [50.5212, 8.8656],
-      [50.7845, 8.9354]
-    ];
-
-    for (int i = 0; i < zipCodes.length; i++) {
-      mMarkers.add(Marker(
-              markerId: MarkerId("$i"),
-              position: LatLng(zipCodes[i][0], zipCodes[i][1]),
-              icon: _markerIcon,
-              onTap: () {},
-              infoWindow: InfoWindow(
-                title: 'Sarah',
-              )) // Marker
-          );
-    }
-*/
-/*
-    try {
-      for (int i = 0; i < zipCodes.length; i++) {
-        int thisCode = zipCodes[i];
-        final response =
-            await http.get(Uri.parse('https://thezipcodes.com/api/v1/search?'
-                'zipCode=$thisCode'
-                '&countryCode=DE&apiKey=24d4c00a7dbb1a164ef2c19a6bc8fb61'));
-        if (response.statusCode == 200) {
-          var res = json.decode(response.body);
-          double latitude = double.parse(res["location"][0]["latitude"]);
-          double longitude = double.parse(res["location"][0]["longitude"]);
-
-          mMarkers.add(Marker(
-                  markerId: MarkerId("$i"),
-                  position: LatLng(latitude, longitude),
-                  icon: _markerIcon,
-                  onTap: () {},
-                  infoWindow: InfoWindow(
-                    title: 'Sarah',
-                  )) // Marker
-              );
-          print("ADDED $i");
-          sleep(Duration(milliseconds: 300));
-          print("FINISHED $i");
-        } else {
-          print("ERROR: Failed to load $i");
-          i--;
-        }
-      }
-    } catch (e) {
-      print("ERROR: $e");
-    }
-*/
     return mMarkers.toSet();
   }
 

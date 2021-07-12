@@ -26,16 +26,16 @@ class SharedPreferenceHelper {
   //  getting data from SharedPreferences
   static Future<String> getVornameSharedPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return await prefs.getString(sharedPreferenceVornameKey);
+    return prefs.getString(sharedPreferenceVornameKey);
   }
 
   static Future<String> getNachnameSharedPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return await prefs.getString(sharedPreferenceNachnameKey);
+    return prefs.getString(sharedPreferenceNachnameKey);
   }
 
   static Future<String> getImageURLSharedPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return await prefs.getString(sharedPreferenceImageURLKey);
+    return prefs.getString(sharedPreferenceImageURLKey);
   }
 }

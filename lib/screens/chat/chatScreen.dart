@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter/rendering.dart';
-import 'package:go_mama/sharedPreferencesHelper.dart';
+import 'package:go_mama/helperFiles/sharedPreferencesHelper.dart';
 
 class ChatScreen extends StatefulWidget {
   final String otherUserFullName;

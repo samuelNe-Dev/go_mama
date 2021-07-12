@@ -1,19 +1,14 @@
-import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_mama/screens/chat/chatList.dart';
-import 'package:go_mama/screens/home/imageProfile.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
+import 'package:go_mama/screens/map/Map.dart';
 import 'package:go_mama/screens/profile/currentUserProfile.dart';
-import 'package:go_mama/screens/profile/otherUserProfile.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:go_mama/screens/home/hilfe_page.dart';
 import 'package:go_mama/screens/home/Finanzierung.dart';
-import 'package:go_mama/Map.dart';
 
 /*
 This is the home screen after signing in. Here the user sees a motivational quote
@@ -29,8 +24,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   var user = FirebaseAuth.instance.currentUser;
-  final Stream<QuerySnapshot> _usersStream =
-      FirebaseFirestore.instance.collection('Users').snapshots();
+  // final Stream<QuerySnapshot> _usersStream =
+  //     FirebaseFirestore.instance.collection('Users').snapshots();
 
   final screens = [
     Center(

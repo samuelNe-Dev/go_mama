@@ -3,20 +3,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:go_mama/firestore.dart';
-import 'package:go_mama/sharedPreferencesHelper.dart';
+import 'package:go_mama/helperFiles/firestore.dart';
+import 'package:go_mama/helperFiles/sharedPreferencesHelper.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:go_mama/screens/register/agb.dart';
-import 'package:go_mama/screens/verify/verify.dart';
+import 'package:go_mama/screens/register/verify/verify.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 /*
 This displays the registration screen. If the registration is fully admitted,
 the user gets back to the starting - login page.
 */
 
-/*TEST tEsT TEST TEST*/
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();

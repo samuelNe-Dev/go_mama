@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_mama/screens/home/imageProfile.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'calendar.dart';
-import 'editProfile.dart';
+
 
 class OtherUserProfile extends StatefulWidget {
   final String userUID;

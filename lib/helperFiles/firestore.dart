@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:io';
 
 Future<void> userSetup(String firstName, String lastName, String birthday,
     String plz, String major, String amountChildren, String imageURL) async {
