@@ -34,3 +34,20 @@ Future<void> userSetup(String firstName, String lastName, String birthday,
   });
   return;
 }
+
+Future<QuerySnapshot> getUserByName(String vorname) async {
+  return FirebaseFirestore.instance
+      .collection("Users")
+      .where("Vorname", isEqualTo: vorname)
+      .get();
+}
+
+Future createChat(String chatID, chatMap) async {
+  FirebaseFirestore.instance
+      .collection("Chat")
+      .doc(chatID)
+      .set(chatMap)
+      .catchError((e) {
+    print(e);
+  });
+}

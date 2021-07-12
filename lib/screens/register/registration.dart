@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:go_mama/firestore.dart';
+import 'package:go_mama/sharedPreferencesHelper.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:go_mama/screens/register/agb.dart';
 import 'package:go_mama/screens/verify/verify.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /*
 This displays the registration screen. If the registration is fully admitted,
@@ -23,8 +25,10 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   String _email, _password, _passwordRepeat = "";
   String _firstName, _lastName, _birthday, _plz, _major, _amountChildren = "";
+  String _imageURL = "images/default-image.jpg";
 
   bool _isChecked = false;
+
   final auth = FirebaseAuth.instance;
 
   @override
@@ -194,9 +198,13 @@ class _RegistrationState extends State<Registration> {
   }
   _signup(String _email, String _password) async {
     try {
+      await SharedPreferenceHelper.saveVornameSharedPreference(_firstName);
+      await SharedPreferenceHelper.saveNachnameSharedPreference(_lastName);
+      await SharedPreferenceHelper.saveImageURLSharedPreference(_imageURL);
+
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-      userSetup(_firstName, _lastName, _birthday, _plz, _major, _amountChildren, "images/default-image.jpg");
+      userSetup(_firstName, _lastName, _birthday, _plz, _major, _amountChildren, _imageURL);
       //Success
 
       Navigator.of(context)

@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_mama/home_screen.dart';
 import 'package:go_mama/screens/home/home.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:responsive_framework/responsive_framework.dart';

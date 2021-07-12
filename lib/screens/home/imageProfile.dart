@@ -1,19 +1,27 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_mama/firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ImageProfile extends StatefulWidget {
   AsyncSnapshot snapshot;
 
-  ImageProfile({Key key, this.snapshot}): super(key: key);
+  ImageProfile({Key key, this.snapshot}) : super(key: key);
   @override
   _ImageProfileState createState() => _ImageProfileState();
 }
 
 class _ImageProfileState extends State<ImageProfile> {
   File _chosenImage;
+
+  CollectionReference imageRef;
+  firebase_storage.Reference ref;
+
   final ImagePicker picker = ImagePicker();
 
   Widget build(BuildContext context) {
@@ -103,5 +111,22 @@ class _ImageProfileState extends State<ImageProfile> {
             )
           ]),
         ]));
+  }
+
+  Future uploadFile() async {
+    ref = firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('images/${_chosenImage.path}');
+
+      await ref.putFile(_chosenImage).whenComplete(() async {
+        await ref.getDownloadURL().then((value){
+          imageRef.add({'url': value, 'name': _chosenImage.path});
+        });
+      });
+  }
+  @override
+  void initState() {
+    super.initState();
+    imageRef = FirebaseFirestore.instance.collection('Users');
   }
 }

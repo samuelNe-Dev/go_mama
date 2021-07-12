@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_mama/home_screen.dart';
+import 'package:go_mama/screens/chat/chatList.dart';
 import 'package:go_mama/screens/home/imageProfile.dart';
 import 'package:go_mama/screens/loginHome/loginHome.dart';
 import 'package:go_mama/screens/profile/currentUserProfile.dart';
@@ -105,8 +105,8 @@ class _HomeState extends State<Home> {
     ),
     Center(
         // 'Nachrichten' - page
-        child: HomeScreen()),
-
+        child: ChatList(),
+    ),
     //Center(
     // 'Info' - page
 
